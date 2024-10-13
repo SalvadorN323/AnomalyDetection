@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomalies</title>
+</head>
+<body>
+    <h1>Welcome to the Count Anomalies Page!</h1>
+    <h1>JSON Output</h1>
+    <pre id="json-output"></pre>
+
+    <script>
+        const jsonData = {{ json_data | tojson }};
+        document.getElementById('json-output').textContent = JSON.stringify(jsonData, null, 4);
+    </script>
+
+    <h1>Processed HSV Images</h1>
+    
+    <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+        img {
+            max-width: 200px;
+            margin: 10px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+        }
+    </style> 
+    <div>
+        {% for filename, img_base64 in images %}
+            <h2>{{ filename }}</h2>
+            <img src="data:image/png;base64,{{ img_base64 }}" alt="{{ filename }}">
+        {% endfor %}
+    </div>
+
+    <form action="/images" method="get">
+        <button type="submit">Go Back to Images / Home Page</button>
+    </form>
+</body>
+</html>

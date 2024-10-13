@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery/ Home Page</title>
+    <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+        img {
+            max-width: 200px;
+            margin: 10px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    {% for image in images %}
+        <img src="{{ url_for('static', filename=image) }}" alt="{{ image }}">
+    {% endfor %}
+</body>
+<body>
+    <h1>Welcome to the Home Page</h1>
+    <form action="/count_anomalies" method="get">
+        <button type="submit">Go to Count Anomalies</button>
+    </form>
+    <form action="/output" method="get">
+        <button type="submit">Go to Anomaly Count JSON</button>
+    </form>
+</body>
+</html>

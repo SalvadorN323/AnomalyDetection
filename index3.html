@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Output Display</title>
+</head>
+<body>
+    <h1>JSON Output</h1>
+    <pre id="json-output"></pre>
+
+    <script>
+        // Example JSON data
+        const jsonData = {{ json_d | tojson }};
+
+        // Display JSON data in the pre element
+        document.getElementById('json-output').textContent = JSON.stringify(jsonData, null, 2);
+    </script>
+    <form action="/images" method="get">
+        <button type="submit">Go Back to Images / Home Page</button>
+    </form>
+</body>
+</html>
